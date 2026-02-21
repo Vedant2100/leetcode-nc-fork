@@ -2,33 +2,40 @@ class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         if len(s1) > len(s2):
             return False
+        s1count = Counter(s1)
+        window = Counter(s2[:len(s1)])
 
-        s1Count, s2Count = [0] * 26, [0] * 26
-        for i in range(len(s1)):
-            s1Count[ord(s1[i]) - ord("a")] += 1
-            s2Count[ord(s2[i]) - ord("a")] += 1
+        if window == s1count: 
+            return True
+        
+        for i in range(len(s1), len(s2)):
+            window[s2[i]] += 1 # new elem
+            window[s2[i - len(s1)]] -= 1  # old elem 
 
-        matches = 0
-        for i in range(26):
-            matches += 1 if s1Count[i] == s2Count[i] else 0
+            if window[s2[i - len(s1)]] == 0:
+                del window[s2[i-len(s1)]]
 
-        l = 0
-        for r in range(len(s1), len(s2)):
-            if matches == 26:
+            if window == s1count:
                 return True
 
-            index = ord(s2[r]) - ord("a")
-            s2Count[index] += 1
-            if s1Count[index] == s2Count[index]:
-                matches += 1
-            elif s1Count[index] + 1 == s2Count[index]:
-                matches -= 1
+        return False        
 
-            index = ord(s2[l]) - ord("a")
-            s2Count[index] -= 1
-            if s1Count[index] == s2Count[index]:
-                matches += 1
-            elif s1Count[index] - 1 == s2Count[index]:
-                matches -= 1
-            l += 1
-        return matches == 26
+        if len(s1) > len(s2):
+            return False
+
+        s1count = Counter(s1)
+        window = COunter(s2[:len(s1)])
+
+        if window == s1count:
+            return True
+        
+        for i in range(len(s1), len(s2)):
+            window[s2[i]] += 1
+            window[s2[i-len(s1)]] -= 1
+
+            if window[s2[i-len(s1)]] == 0:
+                del window[s2[i-len(s1)]]
+
+            if window == s1count:
+                return True
+        return False
