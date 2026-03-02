@@ -5,12 +5,12 @@ class Solution:
             adjlist[course].append(prereq)
 
         courses = set(adjlist.keys())
-        visited = set()
+        visited = set() # makes a damn TLE difference man
         onpath= set() # for cycle detection
 
         def cycle(node):
-            if node in visited:
-                return False
+            if node in visited: #NEEDED FOR TLE 
+                return False 
             if node in onpath:
                 # print("hi")
                 return True
@@ -20,7 +20,7 @@ class Solution:
                 if cycle(prereq):
                     return True
             onpath.remove(node)
-            visited.add(node)
+            visited.add(node) # has to be at the last.... WHY
             return False
         cycleExists = False
         for course in courses:
