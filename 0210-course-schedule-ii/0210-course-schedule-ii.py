@@ -21,7 +21,7 @@ class Solution:
                 indegree[nei] -= 1
                 if indegree[nei] == 0:
                     q.append(nei)
-        return res if len(res) == numCourses else []
+        return res if len(res) == numCourses else [] # here too
           
 
 
