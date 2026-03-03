@@ -2,7 +2,7 @@ class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
 
         original = image[sr][sc]
-        if color == original:
+        if color == original: # forgot
             return image
         rows, cols = len(image), len(image[0])
         def dfs(r, c):
@@ -15,7 +15,7 @@ class Solution:
                         dfs(r_n, c_n)
 
             return
-        dfs(sr, sc)
+        dfs(sr, sc) # forgot
         return image
 
 
