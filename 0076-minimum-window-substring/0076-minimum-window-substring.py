@@ -4,8 +4,8 @@ class Solution:
         if len(t) > len(s):
             return ""
         countT = Counter(t)
-        minLen = float("inf")
-        minSubst = ""
+        minLen = float("inf") # cannot be len(s) for some reason.beacuse of strict ineq inside
+        minSubst = "" # cannot be s for some reason
         # we start froma. window of size t
         countS = Counter() # empty 
         l = 0
