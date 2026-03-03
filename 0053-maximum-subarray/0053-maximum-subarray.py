@@ -1,5 +1,6 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
+        # DP Kadance O(n)
         curSum = 0
         best_sum_i = [0] * len(nums)
         for i in range(len(nums)):
