@@ -50,7 +50,7 @@ class Solution:
                 for dr, dc in [(0,1), (1,0), (0,-1), (-1, 0), (-1, 1), (1, 1), (-1, -1), (1, -1)]:
                     if 0 <= r+dr < rows and 0 <= c+dc < cols and grid[r+dr][c+dc] == 0 and (r+dr, c+dc) not in visited:
                         q.append((r+dr, c+dc))
-                        visited.add((r+dr, c+dc))
+                        visited.add((r+dr, c+dc)) # TLE if not placed here and placed before for loop.
             waves += 1 
         return -1
         
